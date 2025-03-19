@@ -1,15 +1,17 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+
+import java.awt.*;
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello world! from Group 25");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        initFrame();
+    }
+    public static void initFrame() {
+        Frame f = new Frame();
+        Label l1 = new Label("Hello FIT3077 from group 25!");
+        l1.setBounds(100, 50, 200, 80);
+        f.add(l1);
+        f.setSize(500, 500);
+        f.setLayout(null);
+        f.setVisible(true);
     }
 }
