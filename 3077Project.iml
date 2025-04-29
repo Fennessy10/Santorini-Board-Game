@@ -3,9 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Prototype/Sprint 1/Joshua J. Seeger/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Prototype/Sprint 1/Patrick Fennessy/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Prototype/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Prototype/Sprint 1 Workspace/Joshua J. Seeger/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Prototype/Sprint 1 Workspace/Patrick Fennessy/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
