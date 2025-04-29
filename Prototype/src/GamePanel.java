@@ -8,8 +8,11 @@ public class GamePanel extends JPanel {
     private final int scale = 12;
 
     private final int tileSize = originalTileSize * scale;
+
+    // hardcoded panel size based on default 5x5 board Santorini normally uses
     private final int maxScreenCol = 5;
     private final int maxScreenRow = 5;
+
     private final int screenWidth = tileSize * maxScreenCol;
     private final int screenHeight = tileSize * maxScreenRow;
 
