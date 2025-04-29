@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.santorini.GamePanelFrame">
+  <grid id="27dc6" binding="panel2" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-8026784"/>
+      <font name="Courier New" size="16" style="1"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="abe26" binding="panel_n" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-3089575"/>
+          <font name="Consolas" size="16" style="0"/>
+        </properties>
+        <border type="none" title="NORTH"/>
+        <children/>
+      </grid>
+      <grid id="aeda9" binding="panel_w" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="West"/>
+        <properties>
+          <background color="-3089575"/>
+          <font name="Consolas" size="16" style="0"/>
+        </properties>
+        <border type="none" title="WEST"/>
+        <children/>
+      </grid>
+      <grid id="c848c" binding="panel_e" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="East"/>
+        <properties>
+          <background color="-3089575"/>
+          <font name="Consolas" size="16" style="0"/>
+        </properties>
+        <border type="none" title="WEST"/>
+        <children/>
+      </grid>
+      <grid id="df615" binding="panel_s" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-3089575"/>
+          <font name="Consolas" size="16" style="0"/>
+        </properties>
+        <border type="none" title="SOUTH"/>
+        <children/>
+      </grid>
+      <grid id="53f7c" binding="panel_c" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <font name="Consolas" size="14" style="0"/>
+        </properties>
+        <border type="none" title="Centre"/>
+        <children/>
+      </grid>
+    </children>
+  </grid>
+</form>
