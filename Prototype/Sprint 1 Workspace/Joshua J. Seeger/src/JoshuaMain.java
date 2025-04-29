@@ -1,7 +1,7 @@
 
 
 import java.awt.*;
-public class Main {
+public class JoshuaMain {
     public static void main(String[] args) {
         initFrame();
     }
