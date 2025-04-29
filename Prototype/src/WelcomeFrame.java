@@ -9,6 +9,10 @@ public class WelcomeFrame {
     private JButton btn_Enter;
 
     public WelcomeFrame() {
+        panel1 = new JPanel(); // Initialise the panel
+        btn_Enter = new JButton("Enter"); // Initialise the button
+        panel1.add(btn_Enter); // Add the button to the panel
+
         btn_Enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
