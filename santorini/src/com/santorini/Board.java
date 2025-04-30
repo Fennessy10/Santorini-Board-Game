@@ -40,6 +40,13 @@ public class Board {
         return x<BOARD_SIZE&&y<BOARD_SIZE&&x>=0&&y>=0;
     }
 
+
+    /* NOTE: for a lot of this graphic stuff we could probably move to SpriteManager
+        and rename the class to GraphicManager to better represent its purpose.
+
+        at the moment we are just trying to get this to work and we can refactor later.
+    */
+
     // Method's purpose is for creating rudimentary graphics to differentiate between the different lvls
     // Will probably replace this testing method with actual graphics using SpriteManager if we have time
     public void createCellLvlGraphics(int x, int y, int w, int h, Cell cell, Graphics graphics) {
@@ -70,6 +77,20 @@ public class Board {
             graphics.drawString("Lvl"+cell.getBuildLvl(), x+2+3, y+5+10);
         }
     }
+
+// Also likely to be a temp method just for testing purposes to represent a dome.
+    // Probably still good enough for final version, just depends on how fancy we want our graphics to be
+    public void createDomeGraphics(int x, int y, int w, int h, Graphics graphics) {
+        // generates the dome dimensions based on the cell size and substracts 10. To make sure it fits in the cell.
+        int domeDimension = Math.min(w,h)-10;
+        int dome_x=x+(w-domeDimension)/2;
+        int dome_y=y+(h-domeDimension)/2;
+        graphics.setColor(Color.MAGENTA);
+        graphics.fillOval(dome_x, dome_y, domeDimension, domeDimension);
+        graphics.setColor(Color.BLACK);
+        graphics.drawOval(dome_x, dome_y, domeDimension, domeDimension);
+    }
+
 
 
 }
