@@ -10,7 +10,7 @@ public class Board {
 
     // board constructor
     public Board() {
-
+        initBoard();
     }
 
     // init method for board
@@ -24,5 +24,18 @@ public class Board {
         }
     }
 
-    
+    // grabs cell from the board based on the given coordinates
+    public Cell grabCell(int x, int y) {
+        if (isPosAllowed(x, y)) {
+            return cells[x][y];
+        }
+        return null;
+    }
+
+    // checks if coords are within bounds of board
+    public boolean isPosAllowed(int x, int y) {
+        return x<BOARD_SIZE&&y<BOARD_SIZE&&x>=0&&y>=0;
+    }
+
+
 }
