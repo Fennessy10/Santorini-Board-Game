@@ -59,6 +59,13 @@ public class Cell {
     }
 
 
+    // method for attesting if we can build a building in this cell.
+    public boolean canBuild() {
+        // run a conditional check to make sure there isn't a worker, dome and the build level is less than 3.
+        return !this.containsWorker() && !getDome() && this.build_lvl < 3;
+    }
+
+
 
 
     // get&set stuff
