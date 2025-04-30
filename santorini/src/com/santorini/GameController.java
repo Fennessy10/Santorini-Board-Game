@@ -21,6 +21,25 @@ public class GameController {
         this.game_over = false;
     }
 
+    private void initPlayers(String p1name, String p2name) {
+        Player p1 = new Player(p1name);
+        Player p2 = new Player(p2name);
+        this.players.add(p1);
+        this.players.add(p2);
+    }
+
+    private void initUI() {
+        SwingUtilities.invokeLater(() -> {
+            frame = new JFrame("Santorini");
+            gamepanel = new main.GamePanel();
+            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            frame.setSize(1000, 1000);
+            frame.pack();
+            frame.add(gamepanel);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
+    }
 
 
 
