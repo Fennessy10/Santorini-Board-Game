@@ -9,7 +9,6 @@ public class Cell {
     private int build_lvl;
 
 
-
     // contructor initialises the cell
     public Cell(int x, int y) {
         this.x=x;
@@ -33,6 +32,34 @@ public class Cell {
         }
         return false;
     }
+
+
+    // check if we can add a dome to this cell. Do a conditional check to make sure there isn't a dome or worker
+    public boolean canAddDome() {
+        return !containsWorker() && !getDome();
+    }
+
+    // increase the build level of the cell
+    public boolean incLvl() {
+        if (this.build_lvl < 3 && !has_dome) {
+            this.build_lvl++;
+            return true;
+        }
+        return false;
+    }
+
+
+    // bool method to append a dome to the cell if it doesn't already have one.
+    public boolean appendDome() {
+        if (!this.has_dome) {
+            this.has_dome = true;
+            return true;
+        }
+        return false;
+    }
+
+
+
 
     // get&set stuff
     public int getX() {
