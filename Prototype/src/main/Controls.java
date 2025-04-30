@@ -7,9 +7,7 @@ public class Controls implements KeyListener, MouseListener, MouseMotionListener
     private boolean mousePressed;
 //    public boolean workerPressed;
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
+
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -25,6 +23,25 @@ public class Controls implements KeyListener, MouseListener, MouseMotionListener
         return mousePressed;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
     @Override
     public void mouseEntered(MouseEvent e) {
 
