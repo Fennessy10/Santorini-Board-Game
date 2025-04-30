@@ -92,5 +92,11 @@ public class Board {
     }
 
 
+    public void createWorkerGraphics(int x, int y, int w, int h, Graphics graphics, Worker worker) {
+        int workerSize = Math.min(w,h)-20;
+        int worker_x=x+(w-workerSize)/2;
+        int worker_y=y+(h-workerSize)/2;
+
+    }
 
 }

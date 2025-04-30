@@ -4,13 +4,14 @@ public class Worker {
     private int x;
     private int y;
     private int worker_id;
-
+    private Player player;
 
     // contructor for worker. Init all attributes.
-    public Worker(int x, int y, int worker_id) {
+    public Worker(int x, int y, int worker_id, Player player) {
         this.x=x;
         this.y=y;
         this.worker_id=worker_id;
+        this.player=player;
     }
 
     // set position of worker
@@ -40,5 +41,7 @@ public class Worker {
         this.worker_id = worker_id;
     }
 
-
+    public Player getPlayer() {
+        return player;
+    }
 }
