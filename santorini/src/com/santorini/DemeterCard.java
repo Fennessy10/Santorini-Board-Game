@@ -41,4 +41,65 @@ public class DemeterCard extends GodCard {
        }
        return true;
    }
+
+
+    @Override
+    public boolean move(Board board,Cell originalCell, Cell targetCell) {
+        if (!isMoveAllowed(board, originalCell, targetCell)) {
+            return false;
+        }
+        Worker worker = originalCell.getWorker();
+        // Move worker to target cell
+        originalCell.setWorker(null);
+        worker.setPos(targetCell.getX(), targetCell.getY());
+        targetCell.setWorker(worker);
+        // reinitialise build tracker after move is done.
+        initBuildTracker();
+        return true;
+    }
+
+    @Override
+    public boolean isBuildAllowed(Board board, Cell workerCell, Cell buildCell) {
+        // Standard build validation with Demeter power (can build twice, but not on same space)
+        if (workerCell == null || buildCell == null) {
+            return false;
+        }
+        int worker_x = workerCell.getX();
+        int worker_y = workerCell.getY();
+        int build_x = buildCell.getX();
+        int build_y = buildCell.getY();
+        // Check if target is adjacent to worker
+        if (Math.abs(build_x - worker_x) > 1 || Math.abs(build_y - worker_y) > 1) {
+            return false;
+        }
+        // Check that target cell is buildable (no worker, no dome, level < 3)
+        if (!buildCell.canBuild()) {
+            return false;
+        }
+        // Conditional to make sure if its the second build its not the same space as the first.
+        if (alreadyBuilt && build_x == initialBuildX && build_y == initialBuildY) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean build(Board board, Cell workerCell, Cell buildCell) {
+        if (!isBuildAllowed(board, workerCell, buildCell)) {
+            return false;
+        }
+        buildCell.incLvl();
+        if (!alreadyBuilt) {
+            // Take note of first build location
+            alreadyBuilt = true;
+            initialBuildX = buildCell.getX();
+            initialBuildY = buildCell.getY();
+            return false;
+        } else {
+            // reinit build tracking
+            initBuildTracker();
+            return true;
+        }
+    }
 }
