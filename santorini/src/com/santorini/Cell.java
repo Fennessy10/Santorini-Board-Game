@@ -1,13 +1,23 @@
 package com.santorini;
 
-import javax.smartcardio.Card;
-
 public class Cell {
-    public int x;
-    public int y;
+    private int x;
+    private int y;
+    // need to implement
     private Worker worker;
     private boolean has_dome;
     private int build_lvl;
 
-    
+
+
+    // contructor initialises the cell
+    public Cell(int x, int y) {
+        this.x=x;
+        this.y=y;
+        // again... need to implement
+        this.worker=null;
+        this.has_dome=false;
+        this.build_lvl=0;
+    }
+
 }
