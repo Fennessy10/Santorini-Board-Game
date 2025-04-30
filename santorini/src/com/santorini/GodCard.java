@@ -13,13 +13,13 @@ public abstract class GodCard {
     }
 
     // abstract method will be used to check if move is allowed on the basis of the God's abilities
-    public abstract boolean isMoveAllowed(Cell originalCell, Cell targetCell);
+    public abstract boolean isMoveAllowed(Board board,Cell originalCell, Cell targetCell);
     // abstract method for move execution on the basis of god power
-    public abstract boolean move(Cell originalCell, Cell targetCell);
+    public abstract boolean move(Board board,Cell originalCell, Cell targetCell);
     // abstract method for checking if build is valid based on god abilities
-    public abstract boolean isBuildAllowed(Cell workerCell, Cell buildCell);
+    public abstract boolean isBuildAllowed(Board board,Cell workerCell, Cell buildCell);
     // abstract method for execution of build
-    public abstract boolean build(Cell workerCell, Cell buildCell);
+    public abstract boolean build(Board board,Cell workerCell, Cell buildCell);
     // getters&setters
     public String getName() {
         return this.name;
