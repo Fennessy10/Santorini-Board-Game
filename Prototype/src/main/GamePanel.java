@@ -78,9 +78,9 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void update() {
         // if worker clicked
-        if (controls.MouseIsPressed()) {
+        if (controls.MouseIsClicked()) {
             // light up the adjacent spaces around thw worker
-            System.out.println("yo");
+            System.out.println("click again to stop");
 
         }
     }

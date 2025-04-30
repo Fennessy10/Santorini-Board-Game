@@ -4,43 +4,48 @@ import java.awt.event.*;
 
 public class Controls implements KeyListener, MouseListener, MouseMotionListener {
 
-    private boolean mousePressed;
+    private boolean mouseClicked;
 //    public boolean workerPressed;
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (mouseClicked) {
+            mouseClicked = false;
+        } else {
+            mouseClicked = true;
+        }
+    }
+
+
+    public boolean MouseIsClicked() {
+        return mouseClicked;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     @Override
     public void mousePressed(MouseEvent e) {
-        mousePressed = true;
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        mousePressed = false;
-    }
-
-    public boolean MouseIsPressed() {
-        return mousePressed;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
     }
     @Override
     public void mouseEntered(MouseEvent e) {
