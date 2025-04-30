@@ -18,5 +18,27 @@ public class DemeterCard extends GodCard {
 
 
    @Override
-    public boolean isMoveAllowed()
+    public boolean isMoveAllowed(Board board, Cell originalCell, Cell targetCell) {
+       // don't even attempt to move if the cell is null
+       if (originalCell==null || targetCell==null) {
+        return false;
+       }
+       int original_x=originalCell.getX();
+       int original_y=originalCell.getY();
+       int target_x=targetCell.getX();
+       int target_y=targetCell.getY();
+       // Identify if given target is adjacent to original cell
+       if (Math.abs(target_x-original_x)>1 || Math.abs(target_y-original_y)>1) {
+           return false;
+       }
+       // Identify if the target cell is occupied by a worker or a dome
+       if (targetCell.containsWorker() || targetCell.getDome()) {
+           return false;
+       }
+       // Identify if the target cell is already occupied by a building
+       if (targetCell.getBuildLvl()-originalCell.getBuildLvl()>1) {
+           return false;
+       }
+       return true;
+   }
 }
