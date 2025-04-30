@@ -14,7 +14,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 public class WelcomeFrame  {
 
 
-    private JPanel panel1;
+    public JPanel panel1;
     private JButton btn_Enter;
 
     public WelcomeFrame() {
