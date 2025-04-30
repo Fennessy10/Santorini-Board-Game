@@ -96,6 +96,16 @@ public class Board {
         int workerSize = Math.min(w,h)-20;
         int worker_x=x+(w-workerSize)/2;
         int worker_y=y+(h-workerSize)/2;
+        // draws the worker based on the worker id for differentiating different workers.
+        if (worker.getWorkerId()==1) {
+            graphics.setColor(Color.RED);
+        } else {
+            graphics.setColor(Color.BLUE);
+        }
+        graphics.fillOval(worker_x, worker_y, workerSize, workerSize);
+        graphics.setColor(Color.BLACK);
+        graphics.drawOval(worker_x, worker_y, workerSize, workerSize);
+        graphics.drawString(String.valueOf(worker.getWorkerId()), (worker_x+workerSize/2), (worker_y+workerSize/2));
 
     }
 
