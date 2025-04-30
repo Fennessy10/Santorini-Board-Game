@@ -20,4 +20,19 @@ public class Cell {
         this.build_lvl=0;
     }
 
+    // check if the cell contains a worker
+    public boolean containsWorker(){
+        return this.worker!=null;
+    }
+
+    // adds dome to the cell
+    public boolean addDome(){
+        if(!this.has_dome){
+            this.has_dome=true;
+            return true;
+        }
+        return false;
+    }
+
+
 }
