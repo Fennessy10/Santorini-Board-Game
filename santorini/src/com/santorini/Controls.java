@@ -2,84 +2,55 @@ package main;
 
 import java.awt.event.*;
 
-public class Controls implements KeyListener, MouseListener, MouseMotionListener {
+public class Controls {
+    private GamePanel panel;
+    private MouseAdapter boardMouseListener;
+    private KeyAdapter keyListener;
 
-    private boolean mouseClicked;
-//    public boolean workerPressed;
 
+    public Controls(GamePanel panel) {
+        this.panel = panel;
+        initListeners();
+    }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if (mouseClicked) {
-            mouseClicked = false;
-        } else {
-            mouseClicked = true;
+    // method to initialise the listeners for mouse and keyboard
+    private void initListeners() {
+        boardMouseListener = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                panel.handleCellClick(e.getX(), e.getY());
+            }
+        };
+        keyListener = new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                handleKeyPress(e);
+            }
+        };
+    }
+
+    // method handles key events
+    private void handleKeyPress(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_ESCAPE:
+                GameController controller = panel.getController();
+                Player currentPlayer = controller.getCurrentPlayer();
+                if (currentPlayer != null && currentPlayer.getSelectedWorker() != null) {
+                    currentPlayer.setSelectedWorker(null);
+                    if (controller.getGamePhase() == GameController.GamePhase.MOVE_WORKER) {
+                        panel.repaint();
+                    }
+                }
+                break;
         }
     }
 
 
-    public boolean MouseIsClicked() {
-        return mouseClicked;
+// getters
+    public MouseAdapter getBoardMouseListener() {
+        return boardMouseListener;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
+    public KeyAdapter getKeyListener() {
+        return keyListener;
     }
 }
