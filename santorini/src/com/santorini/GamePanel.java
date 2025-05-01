@@ -1,4 +1,4 @@
-package main;
+package com.santorini;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
     // FPS
     int FPS = 60;
 
-    Controls controls = new Controls();
+    main.Controls controls = new main.Controls();
     Thread gameThread;
 
     // set workers default position
