@@ -221,6 +221,9 @@ public class GamePanelFrame extends JFrame implements Runnable {
 
         gamePanelFrame.setLocationRelativeTo(null);
 
+        GameController gameController = new GameController();
+        gameController.initPlayers("john", "james");
+
         gamePanelFrame.startGameThread();
 
     }
