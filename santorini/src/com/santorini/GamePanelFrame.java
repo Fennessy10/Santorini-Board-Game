@@ -345,36 +345,72 @@ public class GamePanelFrame extends JFrame implements Runnable {
     }
 
     private void drawWorker(Graphics g, int x, int y, Worker worker) {
+        Graphics2D g2d = (Graphics2D) g;
         Color workerColor;
         if (worker.getPlayer() == controller.getPlayers().get(0)) {
             workerColor = Color.RED;
         } else {
             workerColor = Color.BLUE;
         }
-
-        // Draw worker
-        g.setColor(workerColor);
         int workerMargin = 15;
-        g.fillOval(x + workerMargin, y + workerMargin,
-                CELL_SIZE - 2 * workerMargin, CELL_SIZE - 2 * workerMargin);
-
-        // Draw worker ID
-        g.setColor(Color.WHITE);
-        Font originalFont = g.getFont();
-        g.setFont(new Font(originalFont.getName(), Font.BOLD, 16));
-        g.drawString(String.valueOf(worker.getWorkerId()),
-                x + CELL_SIZE/2 - 5,
-                y + CELL_SIZE/2 + 5);
-        g.setFont(originalFont);
-
-        // Highlight selected worker
+        int workerSize = CELL_SIZE - 2 * workerMargin;
         Player currentPlayer = controller.getCurrentPlayer();
         if (currentPlayer.getUtilisedWorker() == worker) {
-            g.setColor(Color.YELLOW);
-            g.drawOval(x + workerMargin - 2, y + workerMargin - 2,
-                    CELL_SIZE - 2 * workerMargin + 4,
-                    CELL_SIZE - 2 * workerMargin + 4);
+            Stroke originalStroke = g2d.getStroke();
+            g2d.setColor(Color.YELLOW);
+            g2d.setStroke(new BasicStroke(4.0f));
+            g2d.drawOval(
+                    x + workerMargin - 5,
+                    y + workerMargin - 5,
+                    workerSize + 10,
+                    workerSize + 10
+            );
+            g2d.setColor(Color.WHITE);
+            g2d.setStroke(new BasicStroke(2.0f));
+            g2d.drawOval(
+                    x + workerMargin - 10,
+                    y + workerMargin - 10,
+                    workerSize + 20,
+                    workerSize + 20
+            );
+            g2d.setStroke(originalStroke);
         }
+        g2d.setColor(workerColor);
+        g2d.fillOval(
+                x + workerMargin,
+                y + workerMargin,
+                workerSize,
+                workerSize
+        );
+        g2d.setColor(workerColor.darker());
+        g2d.fillOval(
+                x + workerMargin + 5,
+                y + workerMargin + 5,
+                workerSize - 10,
+                workerSize - 10
+        );
+        g2d.setColor(Color.BLACK);
+        g2d.drawOval(
+                x + workerMargin,
+                y + workerMargin,
+                workerSize,
+                workerSize
+        );
+        g2d.setColor(Color.WHITE);
+        Font originalFont = g.getFont();
+        g2d.setFont(new Font("Arial", Font.BOLD, 18));
+        FontMetrics metrics = g2d.getFontMetrics();
+        String workerId = String.valueOf(worker.getWorkerId());
+        int textX = x + CELL_SIZE/2 - metrics.stringWidth(workerId)/2;
+        int textY = y + CELL_SIZE/2 + metrics.getHeight()/3;
+        g2d.setColor(Color.BLACK);
+        g2d.drawString(workerId, textX+1, textY+1);
+        g2d.drawString(workerId, textX-1, textY-1);
+        g2d.drawString(workerId, textX+1, textY-1);
+        g2d.drawString(workerId, textX-1, textY+1);
+        g2d.setColor(Color.WHITE);
+        g2d.drawString(workerId, textX, textY);
+        g2d.setFont(originalFont);
     }
 
     public void handleCellClick(int x, int y) {
