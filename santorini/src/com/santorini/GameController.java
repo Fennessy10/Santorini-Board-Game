@@ -209,6 +209,10 @@ public class GameController {
             Cell workerCell = board.grabCell(selectedWorker.getX(), selectedWorker.getY());
             // Use god's build ability
             if (godCard.build(board, workerCell, cell)) {
+                // Check if the build level is now 3, add a dome
+                if (cell.getBuildLvl() == 3) {
+                    cell.addDome();
+                }
                 // End turn and switch players
                 endTurn();
             }
