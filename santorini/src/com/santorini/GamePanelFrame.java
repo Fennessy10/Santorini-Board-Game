@@ -412,15 +412,4 @@ public class GamePanelFrame extends JFrame implements Runnable {
         return controller;
     }
 
-    // psvm method for testing
-    public static void main(String[] args) {
-        // Create game controller and initialize players
-        GameController gameController = new GameController("John", "James");
-
-        // Create and show game panel frame
-        GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
-        gamePanelFrame.setVisible(true);
-        gamePanelFrame.setLocationRelativeTo(null);
-        gamePanelFrame.startGameThread();
-    }
 }

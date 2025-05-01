@@ -38,7 +38,7 @@
         <properties>
           <font name="DialogInput" size="20" style="1"/>
           <foreground color="-14414800"/>
-          <text value="Basic Santorini Game for the begginers."/>
+          <text value="Basic Santorini Game for beginners"/>
         </properties>
       </component>
       <component id="e64b5" class="javax.swing.JLabel">
