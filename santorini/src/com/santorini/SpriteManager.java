@@ -1,4 +1,4 @@
-package main;
+package com.santorini;
 
 
 // Handles sprites (game image assets) for the game
