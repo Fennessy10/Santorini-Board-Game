@@ -1,7 +1,7 @@
 package main;
 
 import java.awt.event.*;
-
+/*
 public class Controls {
     private GamePanel panel;
     private MouseAdapter boardMouseListener;
@@ -53,4 +53,4 @@ public class Controls {
     public KeyAdapter getKeyListener() {
         return keyListener;
     }
-}
+}*/

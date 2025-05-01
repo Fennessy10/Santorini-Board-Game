@@ -39,7 +39,7 @@ public class GamePanelFrame extends JFrame implements Runnable {
     // FPS
     int FPS = 60;
 
-    main.Controls controls = new main.Controls();
+ //   main.Controls controls = new main.Controls();
     Thread gameThread;
 
     // set workers default position

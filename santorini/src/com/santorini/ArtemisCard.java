@@ -1,3 +1,10 @@
+package com.santorini;
+
+import com.santorini.Board;
+import com.santorini.Cell;
+import com.santorini.GodCard;
+import com.santorini.Worker;
+
 public class ArtemisCard extends GodCard {
     private boolean alreadyMoved;
     private int initial_x;
@@ -6,7 +13,7 @@ public class ArtemisCard extends GodCard {
     // constructor init
     public ArtemisCard() {
         super("Artemis", "Your Worker may move one additional time, however not back to its initial space.");
-        resetMoveTracking();
+        initMoveTracker();
     }
 
 
@@ -36,13 +43,13 @@ public class ArtemisCard extends GodCard {
             initial_y = original_y;
         } else {
             // After first move, cannot move back to initial position
-            if (target_x == initial_x && target_y == initialY) {
+            if (target_x == initial_x && target_y == initial_y) {
                 return false;
             }
         }
 
         // Check if target is adjacent
-        if (Math.abs(target_x - fromX) > 1 || Math.abs(target_y - original_y) > 1) {
+        if (Math.abs(target_x - original_x) > 1 || Math.abs(target_y - original_y) > 1) {
             return false;
         }
 
@@ -60,7 +67,7 @@ public class ArtemisCard extends GodCard {
 
     @Override
     public boolean move(Board board, Cell originalCell, Cell targetCell) {
-        if (!isValidMove(board, originalCell, targetCell)) {
+        if (!isMoveAllowed(board, originalCell, targetCell)) {
             return false;
         }
 
@@ -68,11 +75,11 @@ public class ArtemisCard extends GodCard {
 
         // Move worker to target cell
         originalCell.setWorker(null);
-        worker.setPosition(targetCell.getX(), targetCell.getY());
+        worker.setPos(targetCell.getX(), targetCell.getY());
         targetCell.setWorker(worker);
 
-        if (!hasMovedOnce) {
-            hasMovedOnce = true;
+        if (!alreadyMoved) {
+            alreadyMoved = true;
             return false; 
         } else {
             initMoveTracker();
@@ -103,7 +110,7 @@ public class ArtemisCard extends GodCard {
 
     @Override
     public boolean build(Board board, Cell workerCell, Cell buildCell) {
-        if (!isValidBuild(board, workerCell, buildCell)) {
+        if (!isMoveAllowed(board, workerCell, buildCell)) {
             return false;
         }
 
