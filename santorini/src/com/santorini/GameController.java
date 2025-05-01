@@ -10,7 +10,7 @@ public class GameController {
     private Player curPlayer;
     private GamePhase gamephase;
     private boolean game_over;
-    private GamePanel gamepanel;
+    private GamePanelFrame gamePanel;
     private JFrame frame;
 
 
@@ -31,11 +31,11 @@ public class GameController {
     private void initUI() {
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Santorini");
-            gamepanel = new GamePanel();
+            gamePanel = new GamePanelFrame();
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             frame.setSize(1000, 1000);
             frame.pack();
-            frame.add(gamepanel);
+            frame.add(gamePanel);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
