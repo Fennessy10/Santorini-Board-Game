@@ -161,8 +161,6 @@ public class GamePanelFrame extends JFrame implements Runnable {
     @Override
     public void run() {
 
-        // TODO: draw the board on screen
-
         double drawInterval = (double) 1000000000 / FPS; // ~0.01666 seconds
         double nextDrawTime = System.nanoTime() + drawInterval;
 

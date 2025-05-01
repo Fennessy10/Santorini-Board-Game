@@ -44,14 +44,13 @@ public class WelcomeFrame  {
             public void actionPerformed(ActionEvent e) {
                 GamePanelFrame gamePanelFrame = new GamePanelFrame();
                 gamePanelFrame.setVisible(true);
-
+                gamePanelFrame.startGameThread();
                 parentFrame.dispose(); // close the welcome frame
             }
         });
     }
     public static void main(String[]args){
         JFrame newFrame = new JFrame("Welcome");
-        WelcomeFrame welcomeFrame = new WelcomeFrame(newFrame);
         newFrame.setContentPane(new WelcomeFrame(newFrame).panel1);
         newFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         newFrame.setVisible(true);
