@@ -18,13 +18,13 @@ public class Player {
     }
 
     // method grabs the worker with the given id num
-    public fetchWorkerById(int id) {
+    public Worker fetchWorkerById(int id) {
         if (id==1) {
             return this.worker_1;
         } else if (id==2) {
             return this.worker_2;
         }
-            return null;
+        return null;
 
     }
 
