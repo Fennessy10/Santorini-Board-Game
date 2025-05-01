@@ -6,8 +6,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-
 //import static sun.tools.jconsole.inspector.XDataViewer.dispose;
 
 
@@ -16,8 +14,11 @@ public class WelcomeFrame  {
 
     public JPanel panel1;
     private JButton btn_Enter;
+    private JFrame parentFrame; // reference to the welcome JFrame
 
-    public WelcomeFrame() {
+    public WelcomeFrame(JFrame newFrame) {
+        this.parentFrame = newFrame; // assign the frame so we can dispose it later
+
         // Initialize the panel
         panel1 = new JPanel();
         panel1.setLayout(new BorderLayout());
@@ -43,12 +44,15 @@ public class WelcomeFrame  {
             public void actionPerformed(ActionEvent e) {
                 GamePanelFrame gamePanelFrame = new GamePanelFrame();
                 gamePanelFrame.setVisible(true);
+
+                parentFrame.dispose(); // close the welcome frame
             }
         });
     }
     public static void main(String[]args){
         JFrame newFrame = new JFrame("Welcome");
-        newFrame.setContentPane(new WelcomeFrame().panel1);
+        WelcomeFrame welcomeFrame = new WelcomeFrame(newFrame);
+        newFrame.setContentPane(new WelcomeFrame(newFrame).panel1);
         newFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         newFrame.setVisible(true);
         newFrame.setSize(1000, 1000);

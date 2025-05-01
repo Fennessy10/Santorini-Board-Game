@@ -1,5 +1,4 @@
 import com.santorini.WelcomeFrame;
-import com.santorini.WelcomeFrame;
 
 import javax.swing.*;
 
@@ -9,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Welcome");
-            frame.setContentPane(new WelcomeFrame().panel1);
+            frame.setContentPane(new WelcomeFrame(frame).panel1);
             frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             frame.setSize(1000, 1000);
             frame.setVisible(true);
