@@ -1,12 +1,15 @@
 package com.santorini;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.border.LineBorder;
 
 public class GamePanelFrame extends JFrame implements Runnable {
+    // UI Components from original GamePanelFrame
     private JPanel panel2;
     private JPanel panel_n;
     private JPanel panel_w;
@@ -23,37 +26,57 @@ public class GamePanelFrame extends JFrame implements Runnable {
     private JButton btn_start_over;
     private JLabel lb_worker;
 
-    // screen settings
+    // Screen settings
     private final int originalTileSize = 16;
     private final int scale = 8;
-
     private final int tileSize = originalTileSize * scale;
+    private final int CELL_SIZE = tileSize; // Using tileSize as cell size
 
-    // hardcoded panel size based on default 5x5 board Santorini normally uses
-    private final int maxScreenCol = 5;
-    private final int maxScreenRow = 5;
-
-    private final int screenWidth = tileSize * maxScreenCol;
-    private final int screenHeight = tileSize * maxScreenRow;
+    // Board size
+    private final int BOARD_SIZE = 5;
+    private final int screenWidth = CELL_SIZE * BOARD_SIZE;
+    private final int screenHeight = CELL_SIZE * BOARD_SIZE;
 
     // FPS
-    int FPS = 60;
+    private final int FPS = 60;
+    private Thread gameThread;
 
- //   main.Controls controls = new main.Controls();
-    Thread gameThread;
+    // Game components from GamePanel
+    private GameController controller;
+    private Controls controls;
+    private SpriteManager spriteManager;
 
-    // set workers default position
-    private int workerX = 0;
-    private int workerY = 0;
+    // Status labels for game information
+    private JLabel statusLabel;
+    private JLabel currentPlayerLabel;
 
-    public GamePanelFrame(){
 
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+    public GamePanelFrame() {
+        initializeUI();
+    }
+
+
+    public GamePanelFrame(GameController controller, SpriteManager spriteManager) {
+        this.controller = controller;
+        this.spriteManager = spriteManager;
+        this.controls = new Controls(this);
+
+        initializeUI();
+
+        // Add mouse listener for board interaction
+        panel_c.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                handleCellClick(e.getX(), e.getY());
+            }
+        });
+    }
+
+
+    private void initializeUI() {
+        this.setPreferredSize(new Dimension(screenWidth + 300, screenHeight + 200)); // Added space for panels
         this.setBackground(Color.black);
-        this.addKeyListener(controls);
-        this.addMouseListener(controls);
-        this.addMouseMotionListener(controls);
-        this.setFocusable(true); // focused to recieve key input
+        this.setFocusable(true); // Focused to receive key input
 
         // Initialize main panels
         panel2 = new JPanel(new BorderLayout(10, 10));
@@ -61,8 +84,21 @@ public class GamePanelFrame extends JFrame implements Runnable {
         panel_w = new JPanel();
         panel_e = new JPanel();
         panel_s = new JPanel();
-        panel_c = new JPanel();
-        
+
+        // Create the center panel with custom painting
+        panel_c = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (controller != null) {
+                    drawBoard(g);
+                } else {
+                    // Draw placeholder grid when controller is not available
+                    drawPlaceholderGrid(g);
+                }
+            }
+        };
+
         // Initialize labels
         lb_player_1 = new JLabel("Player 1");
         lb_player_2 = new JLabel("Player 2");
@@ -71,59 +107,56 @@ public class GamePanelFrame extends JFrame implements Runnable {
         lb_winner = new JLabel("Winner:");
         win_pl_name = new JLabel("");
         lb_worker = new JLabel("Worker");
-        
+
+        // Game status labels
+        statusLabel = new JLabel("Game Phase: Setup");
+        currentPlayerLabel = new JLabel("Current Player: None");
+
         // Initialize buttons
         btn_finish = new JButton("Finish");
         btn_start_over = new JButton("Start Over");
-        
+
         // Set up the frame
-        this.setVisible(false);
         this.setSize(1000, 1000);
         this.setContentPane(panel2);
-        this.setTitle("Game Panel");
+        this.setTitle("Santorini Game");
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Configure panel borders for visibility
-        panel_n.setBorder(BorderFactory.createTitledBorder("North Panel"));
-        panel_w.setBorder(BorderFactory.createTitledBorder("West Panel"));
-        panel_e.setBorder(BorderFactory.createTitledBorder("East Panel"));
-        panel_s.setBorder(BorderFactory.createTitledBorder("South Panel"));
-        panel_c.setBorder(BorderFactory.createTitledBorder("Center Panel"));
-        
+        panel_n.setBorder(BorderFactory.createTitledBorder("Game Info"));
+        panel_w.setBorder(BorderFactory.createTitledBorder("Player 1"));
+        panel_e.setBorder(BorderFactory.createTitledBorder("Player 2"));
+        panel_s.setBorder(BorderFactory.createTitledBorder("Game Controls"));
+        panel_c.setBorder(BorderFactory.createTitledBorder("Game Board"));
+
         // Set up panel layouts
         panel_n.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         panel_w.setLayout(new BoxLayout(panel_w, BoxLayout.Y_AXIS));
         panel_e.setLayout(new BoxLayout(panel_e, BoxLayout.Y_AXIS));
         panel_s.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        panel_c.setLayout(new GridLayout(5, 5, 3, 3));
-        
+        panel_c.setLayout(null); // Using null layout for custom drawing
+        panel_c.setPreferredSize(new Dimension(screenWidth, screenHeight));
+
         // Populate the north panel
-        panel_n.add(lb_player_1);
-        panel_n.add(lb_player_2);
-        
+        panel_n.add(statusLabel);
+        panel_n.add(currentPlayerLabel);
+
         // Populate the west panel
-        panel_w.add(lb_card_1);
+        panel_w.add(lb_player_1);
         panel_w.add(Box.createVerticalStrut(10));
-        panel_w.add(lb_worker);
-        
+        panel_w.add(lb_card_1);
+
         // Populate the east panel
+        panel_e.add(lb_player_2);
+        panel_e.add(Box.createVerticalStrut(10));
         panel_e.add(lb_card_2);
-        
+
         // Populate the south panel
         panel_s.add(lb_winner);
         panel_s.add(win_pl_name);
         panel_s.add(btn_finish);
         panel_s.add(btn_start_over);
-        
-        // Populate the center panel with grid cells
-        for (int i = 1; i <= 25; i++){
-            JLabel label = new JLabel(Integer.toString(i));
-            label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-            label.setHorizontalAlignment(SwingConstants.CENTER);
-            label.setPreferredSize(new Dimension(50, 50));
-            panel_c.add(label);
-        }
 
         // Add all panels to the main container
         panel2.add(panel_n, BorderLayout.NORTH);
@@ -139,29 +172,53 @@ public class GamePanelFrame extends JFrame implements Runnable {
                 dispose();
             }
         });
-        
+
         // Add action listener to the start over button
         btn_start_over.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Reset game logic here
+                if (controller != null) {
+                    // Reset game
+                    controller.initUI();
+                    updateUI();
+                }
             }
         });
-
-
     }
 
-    public void startGameThread() {
+    private void drawPlaceholderGrid(Graphics g) {
+        for (int x = 0; x < BOARD_SIZE; x++) {
+            for (int y = 0; y < BOARD_SIZE; y++) {
+                int cellX = x * CELL_SIZE;
+                int cellY = y * CELL_SIZE;
 
+                // Draw cell background
+                g.setColor(new Color(200, 230, 255));
+                g.fillRect(cellX, cellY, CELL_SIZE, CELL_SIZE);
+
+                // Draw cell border
+                g.setColor(Color.BLACK);
+                g.drawRect(cellX, cellY, CELL_SIZE, CELL_SIZE);
+
+                // Draw cell number
+                g.setColor(Color.BLACK);
+                Font originalFont = g.getFont();
+                g.setFont(new Font(originalFont.getName(), Font.BOLD, 16));
+                g.drawString((y * BOARD_SIZE + x + 1) + "", cellX + CELL_SIZE/2 - 10, cellY + CELL_SIZE/2 + 5);
+                g.setFont(originalFont);
+            }
+        }
+    }
+
+
+    public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
-
     }
 
     @Override
     public void run() {
-
-        double drawInterval = (double) 1000000000 / FPS; // ~0.01666 seconds
+        double drawInterval = (double) 1000000000 / FPS;
         double nextDrawTime = System.nanoTime() + drawInterval;
 
         while (gameThread != null) {
@@ -183,54 +240,187 @@ public class GamePanelFrame extends JFrame implements Runnable {
                 e.printStackTrace();
             }
         }
-
-
-
     }
 
     public void update() {
-        // if worker clicked
-        if (controls.MouseIsClicked()) {
-            // light up the adjacent spaces around thw worker
-            System.out.println("click again to stop");
-
+        if (controller != null) {
+            updateUI();
         }
     }
 
-//    public void paintComponent(Graphics g) {
-//
-//        super.paintComponent(g);
-//        Graphics2D g2 = (Graphics2D) g;
-//        g2.setColor(Color.white);
-//
-//
-//
-//        g2.fillRect(0, 300, tileSize, tileSize);
-//
-//        g2.fillRect(workerX, workerY, tileSize, tileSize);
-//
-//
-//        g2.dispose(); //release once done (safer + better performance)
-//    }
-    
-    public static void main(String[]args){
-        GamePanelFrame gamePanelFrame = new GamePanelFrame();
-        gamePanelFrame.setVisible(true);
+    private void updateUI() {
+        if (controller != null) {
+            // Update game info labels
+            statusLabel.setText("Game Phase: " + controller.getGamePhase());
+            currentPlayerLabel.setText("Current Player: " + controller.getCurrentPlayer().getName());
 
-        gamePanelFrame.setLocationRelativeTo(null);
+            // Update player info
+            lb_player_1.setText(controller.getPlayers().get(0).getName());
+            lb_player_2.setText(controller.getPlayers().get(1).getName());
 
-        GameController gameController = new GameController();
-        gameController.initPlayers("john", "james");
+            // Update god cards
+            lb_card_1.setText("God: " + controller.getPlayers().get(0).getGodCard().getName());
+            lb_card_2.setText("God: " + controller.getPlayers().get(1).getGodCard().getName());
 
-        gamePanelFrame.startGameThread();
-
+            // Repaint the center panel
+            panel_c.repaint();
+        }
     }
 
 
+    private void drawBoard(Graphics g) {
+        Board board = controller.getBoard();
+
+        // Draw cells
+        for (int x = 0; x < BOARD_SIZE; x++) {
+            for (int y = 0; y < BOARD_SIZE; y++) {
+                Cell cell = board.grabCell(x, y);
+                drawCell(g, cell);
+            }
+        }
+    }
+
+    private void drawCell(Graphics g, Cell cell) {
+        int x = cell.getX() * CELL_SIZE;
+        int y = cell.getY() * CELL_SIZE;
+
+        // Draw cell background
+        g.setColor(new Color(200, 230, 255));
+        g.fillRect(x, y, CELL_SIZE, CELL_SIZE);
+
+        // Draw cell border
+        g.setColor(Color.BLACK);
+        g.drawRect(x, y, CELL_SIZE, CELL_SIZE);
+
+        // Draw building level
+        int level = cell.getBuildLvl();
+        if (level > 0) {
+            drawBuildingLevel(g, x, y, level);
+        }
+
+        // Draw dome if present
+        if (cell.getDome()) {
+            drawDome(g, x, y);
+        }
+
+        // Draw worker if present
+        if (cell.containsWorker()) {
+            drawWorker(g, x, y, cell.getWorker());
+        }
+    }
+
+    private void drawBuildingLevel(Graphics g, int x, int y, int level) {
+        Color[] levelColors = {
+                new Color(255, 235, 205), // Level 1: Light beige
+                new Color(245, 222, 179), // Level 2: Darker beige
+                new Color(235, 210, 160)  // Level 3: Even darker beige
+        };
+
+        if (level >= 1 && level <= 3) {
+            g.setColor(levelColors[level - 1]);
+            int margin = 5;
+            int levelHeight = 15;
+
+            // Draw a 3D-like block for the building level
+            int blockX = x + margin;
+            int blockY = y + margin;
+            int blockWidth = CELL_SIZE - 2 * margin;
+            int blockHeight = CELL_SIZE - 2 * margin;
+
+            g.fillRect(blockX, blockY, blockWidth, blockHeight);
+
+            // Draw level number
+            g.setColor(Color.BLACK);
+            Font originalFont = g.getFont();
+            g.setFont(new Font(originalFont.getName(), Font.BOLD, 16));
+            g.drawString(String.valueOf(level), x + CELL_SIZE/2 - 5, y + CELL_SIZE/2 + 5);
+            g.setFont(originalFont);
+        }
+    }
+
+    private void drawDome(Graphics g, int x, int y) {
+        g.setColor(new Color(100, 180, 255)); // Blue dome
+        int margin = 10;
+        g.fillOval(x + margin, y + margin, CELL_SIZE - 2 * margin, CELL_SIZE - 2 * margin);
+    }
+
+    private void drawWorker(Graphics g, int x, int y, Worker worker) {
+        Color workerColor;
+        if (worker.getPlayer() == controller.getPlayers().get(0)) {
+            workerColor = Color.RED;
+        } else {
+            workerColor = Color.BLUE;
+        }
+
+        // Draw worker
+        g.setColor(workerColor);
+        int workerMargin = 15;
+        g.fillOval(x + workerMargin, y + workerMargin,
+                CELL_SIZE - 2 * workerMargin, CELL_SIZE - 2 * workerMargin);
+
+        // Draw worker ID
+        g.setColor(Color.WHITE);
+        Font originalFont = g.getFont();
+        g.setFont(new Font(originalFont.getName(), Font.BOLD, 16));
+        g.drawString(String.valueOf(worker.getWorkerId()),
+                x + CELL_SIZE/2 - 5,
+                y + CELL_SIZE/2 + 5);
+        g.setFont(originalFont);
+
+        // Highlight selected worker
+        Player currentPlayer = controller.getCurrentPlayer();
+        if (currentPlayer.getUtilisedWorker() == worker) {
+            g.setColor(Color.YELLOW);
+            g.drawOval(x + workerMargin - 2, y + workerMargin - 2,
+                    CELL_SIZE - 2 * workerMargin + 4,
+                    CELL_SIZE - 2 * workerMargin + 4);
+        }
+    }
+
+    public void handleCellClick(int x, int y) {
+        // Convert pixel coordinates to board coordinates
+        int boardX = x / CELL_SIZE;
+        int boardY = y / CELL_SIZE;
+
+        // Ensure coordinates are within board boundaries
+        if (boardX >= 0 && boardX < BOARD_SIZE && boardY >= 0 && boardY < BOARD_SIZE) {
+            controller.processCellClick(boardX, boardY);
+            updateUI();
+        }
+    }
+
+    public void showWinMessage(String playerName) {
+        SwingUtilities.invokeLater(() -> {
+            win_pl_name.setText(playerName);
+            JOptionPane.showMessageDialog(this,
+                    playerName + " has won the game!",
+                    "Game Over",
+                    JOptionPane.INFORMATION_MESSAGE);
+        });
+    }
+    public void setController(GameController controller) {
+        this.controller = controller;
+        updateUI();
+    }
+
+    public Controls getControls() {
+        return controls;
+    }
+
+
+    public GameController getController() {
+        return controller;
+    }
+
+    // psvm method for testing
+    public static void main(String[] args) {
+        // Create game controller and initialize players
+        GameController gameController = new GameController("John", "James");
+
+        // Create and show game panel frame
+        GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
+        gamePanelFrame.setVisible(true);
+        gamePanelFrame.setLocationRelativeTo(null);
+        gamePanelFrame.startGameThread();
+    }
 }
-
-// Ref: https://www.youtube.com/watch?v=1G4lBJW1vfM
-//Ref: https://www.youtube.com/watch?v=4PfDdJ8GFHI
-// https://stackoverflow.com/questions/5921175/how-to-set-jpanels-width-and-height
-
-

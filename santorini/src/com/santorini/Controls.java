@@ -1,14 +1,19 @@
-package main;
+package com.santorini;
+
+import com.santorini.GameController;
+import com.santorini.GamePanelFrame;
+import com.santorini.GamePhase;
+import com.santorini.Player;
 
 import java.awt.event.*;
-/*
+
 public class Controls {
-    private GamePanel panel;
+    private GamePanelFrame panel;
     private MouseAdapter boardMouseListener;
     private KeyAdapter keyListener;
 
 
-    public Controls(GamePanel panel) {
+    public Controls(GamePanelFrame panel) {
         this.panel = panel;
         initListeners();
     }
@@ -35,9 +40,9 @@ public class Controls {
             case KeyEvent.VK_ESCAPE:
                 GameController controller = panel.getController();
                 Player currentPlayer = controller.getCurrentPlayer();
-                if (currentPlayer != null && currentPlayer.getSelectedWorker() != null) {
-                    currentPlayer.setSelectedWorker(null);
-                    if (controller.getGamePhase() == GameController.GamePhase.MOVE_WORKER) {
+                if (currentPlayer != null && currentPlayer.getUtilisedWorker() != null) {
+                    currentPlayer.setUtilisedWorker(null);
+                    if (controller.getGamePhase() == GamePhase.MOVE_WORKER) {
                         panel.repaint();
                     }
                 }
@@ -53,4 +58,4 @@ public class Controls {
     public KeyAdapter getKeyListener() {
         return keyListener;
     }
-}*/
+}

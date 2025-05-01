@@ -1,3 +1,5 @@
+package com.santorini;
+
 import com.santorini.*;
 
 import java.util.ArrayList;
@@ -30,11 +32,11 @@ public class GameController {
     }
 
     // inits game UI frame
-    private void initUI() {
+    public void initUI() {
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Santorini");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            gamePanel = new GamePanel();
+            gamePanel = new GamePanelFrame();
             frame.add(gamePanel);
             frame.pack();
             frame.setLocationRelativeTo(null);
