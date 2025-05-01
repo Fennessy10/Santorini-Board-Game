@@ -44,6 +44,29 @@ public class GameController {
         });
     }
 
+    public void resetGame() {
+        // Reset board
+        this.board = new Board();
+
+        // Get player names from existing players
+        String player1Name = players.get(0).getName();
+        String player2Name = players.get(1).getName();
+
+        // Clear players list and recreate players
+        this.players.clear();
+        initializePlayers(player1Name, player2Name);
+
+        // Reset game state
+        this.gamePhase = GamePhase.SETUP_WORKERS;
+        this.gameOver = false;
+        this.currentPlayer = players.get(0);
+
+        // Reset UI
+        if (gamePanel != null) {
+            gamePanel.repaint();
+        }
+    }
+
 
     // method handles player init and calls method to assign the god cards.
     private void initializePlayers(String p1_name, String p2_name) {

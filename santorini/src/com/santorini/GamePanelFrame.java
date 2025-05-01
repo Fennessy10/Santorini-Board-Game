@@ -179,7 +179,7 @@ public class GamePanelFrame extends JFrame implements Runnable {
             public void actionPerformed(ActionEvent e) {
                 if (controller != null) {
                     // Reset game
-                    controller.initUI();
+                    controller.resetGame();
                     updateUI();
                 }
             }

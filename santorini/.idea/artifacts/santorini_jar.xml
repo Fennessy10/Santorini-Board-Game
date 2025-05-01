@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="santorini:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/santorini_jar</output-path>
+    <root id="archive" name="santorini.jar">
+      <element id="module-output" name="santorini" />
+    </root>
+  </artifact>
+</component>
