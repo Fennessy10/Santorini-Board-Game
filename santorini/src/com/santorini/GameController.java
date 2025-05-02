@@ -28,20 +28,6 @@ public class GameController {
         this.gameOver = false;
         initializePlayers(p1name, p2name);
         this.currentPlayer = players.get(0);
-//        initUI();
-    }
-
-    // inits game UI frame
-    public void initUI() {
-        SwingUtilities.invokeLater(() -> {
-            frame = new JFrame("Santorini");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            gamePanel = new GamePanelFrame();
-            frame.add(gamePanel);
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
     }
 
     public void setGamePanel(GamePanelFrame gamePanel) {

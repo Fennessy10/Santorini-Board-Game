@@ -258,7 +258,16 @@ public class GamePanelFrame extends JFrame implements Runnable {
         if (controller != null) {
             // Update game info labels
             statusLabel.setText("Game Phase: " + controller.getGamePhase());
-            currentPlayerLabel.setText("Current Player: " + controller.getCurrentPlayer().getName());
+
+
+            Player currentPlayer = controller.getCurrentPlayer();
+            if (currentPlayer == controller.getPlayers().get(0)) {
+                currentPlayerLabel.setForeground(Color.RED);
+            } else {
+                currentPlayerLabel.setForeground(Color.BLUE);
+            }
+            currentPlayerLabel.setText("Current Player: " + currentPlayer.getName());
+
 
             // Update player info
             lb_player_1.setText(controller.getPlayers().get(0).getName());
