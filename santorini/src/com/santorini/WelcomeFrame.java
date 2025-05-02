@@ -25,7 +25,7 @@ public class WelcomeFrame {
     private void initializeUI() {
         // Setup main panel
         panel1= new JPanel();
-        panel1.setLayout(new GridLayout(6, 1));
+        panel1.setLayout(new GridLayout(5, 1));
         panel1.setBackground(new Color(146, 155, 37)); // -8900219 in RGB
 
         // Title label
@@ -109,6 +109,7 @@ public class WelcomeFrame {
 
                 // Create and show game panel frame
                 GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
+                gameController.setGamePanel(gamePanelFrame); // call setter from game controller
                 gamePanelFrame.setVisible(true);
                 gamePanelFrame.setLocationRelativeTo(null);
                 gamePanelFrame.startGameThread();

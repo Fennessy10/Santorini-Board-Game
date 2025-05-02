@@ -28,7 +28,7 @@ public class GameController {
         this.gameOver = false;
         initializePlayers(p1name, p2name);
         this.currentPlayer = players.get(0);
-        initUI();
+//        initUI();
     }
 
     // inits game UI frame
@@ -43,6 +43,11 @@ public class GameController {
             frame.setVisible(true);
         });
     }
+
+    public void setGamePanel(GamePanelFrame gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
 
     public void resetGame() {
         // Reset board
