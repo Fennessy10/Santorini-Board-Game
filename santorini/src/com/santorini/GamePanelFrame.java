@@ -158,12 +158,18 @@ public class GamePanelFrame extends JFrame implements Runnable {
         panel_s.add(btn_finish);
         panel_s.add(btn_start_over);
 
+        // Wrap panel_c in a center wrapper to centre it properly
+        JPanel centerWrapper = new JPanel(new GridBagLayout());
+        centerWrapper.setBorder(BorderFactory.createEmptyBorder());
+        centerWrapper.add(panel_c); // Add game board panel to the centre
+
         // Add all panels to the main container
         panel2.add(panel_n, BorderLayout.NORTH);
         panel2.add(panel_s, BorderLayout.SOUTH);
         panel2.add(panel_e, BorderLayout.EAST);
         panel2.add(panel_w, BorderLayout.WEST);
-        panel2.add(panel_c, BorderLayout.CENTER);
+        panel2.add(centerWrapper, BorderLayout.CENTER);
+
 
         // Add action listener to the finish button
         btn_finish.addActionListener(new ActionListener() {
