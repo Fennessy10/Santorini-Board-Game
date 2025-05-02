@@ -124,7 +124,7 @@ public class GamePanelFrame extends JFrame implements Runnable {
         this.setSize(1000, 1000);
         this.setContentPane(panel2);
         this.setTitle("Santorini Game");
-        this.setResizable(false);
+        this.setResizable(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Configure panel borders for visibility

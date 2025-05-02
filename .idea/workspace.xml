@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="project:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="UI Improvement&#10;- gamephases now have different colours" />
+    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="added potential project structure files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +120,7 @@
       <workItem from="1746155626522" duration="862000" />
       <workItem from="1746157599212" duration="305000" />
       <workItem from="1746157937180" duration="37000" />
-      <workItem from="1746158222483" duration="13289000" />
+      <workItem from="1746158222483" duration="13959000" />
     </task>
     <task id="LOCAL-00001" summary="welcome screen frame is now centered">
       <option name="closed" value="true" />
@@ -165,7 +170,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746169833526</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added jar file">
+      <option name="closed" value="true" />
+      <created>1746180618614</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746180618614</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added potential project structure files">
+      <option name="closed" value="true" />
+      <created>1746180891060</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746180891060</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +210,9 @@
     <MESSAGE value="centred the board in the gamepanelframe" />
     <MESSAGE value="UI Improvement&#10;- more clear whose turn it is based on colour above board" />
     <MESSAGE value="UI Improvement&#10;- gamephases now have different colours" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI Improvement&#10;- gamephases now have different colours" />
+    <MESSAGE value="added jar file" />
+    <MESSAGE value="added potential project structure files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added potential project structure files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
