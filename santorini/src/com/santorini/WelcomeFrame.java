@@ -25,7 +25,7 @@ public class WelcomeFrame {
     private void initializeUI() {
         // Setup main panel
         panel1= new JPanel();
-        panel1.setLayout(new GridLayout(4, 1));
+        panel1.setLayout(new GridLayout(6, 1));
         panel1.setBackground(new Color(146, 155, 37)); // -8900219 in RGB
 
         // Title label
@@ -43,6 +43,38 @@ public class WelcomeFrame {
         developerLabel.setFont(new Font("DialogInput", Font.BOLD, 20));
         developerLabel.setForeground(new Color(240, 241, 0)); // -14414800 in RGB
 
+        // Player 1 name's input
+        JPanel namePanel = new JPanel();
+        namePanel.setBackground(new Color(146, 155, 37)); // Same as main panel
+        namePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        JLabel nameLabel = new JLabel("Enter Player 1 Name: ");
+        nameLabel.setFont(new Font("DialogInput", Font.BOLD, 16));
+        nameLabel.setForeground(new Color(240, 241, 0)); // Yellowish
+
+        JTextField nameField = new JTextField();
+        nameField.setFont(new Font("DialogInput", Font.PLAIN, 16));
+        nameField.setColumns(15);
+        nameField.setPreferredSize(new Dimension(200, 30));  // Force a visible size
+        nameField.setBackground(Color.WHITE); // Ensure it's visible
+        nameField.setForeground(Color.BLACK); // Text color
+        namePanel.add(nameLabel);
+        namePanel.add(nameField);
+
+        JLabel name2Label = new JLabel("Enter Player 2 Name: ");
+        name2Label.setFont(new Font("DialogInput", Font.BOLD, 16));
+        name2Label.setForeground(new Color(240, 241, 0)); // Yellowish
+
+        JTextField name2Field = new JTextField();
+        name2Field.setFont(new Font("DialogInput", Font.PLAIN, 16));
+        name2Field.setColumns(15);
+        name2Field.setPreferredSize(new Dimension(200, 30));  // Force a visible size
+        name2Field.setBackground(Color.WHITE); // Ensure it's visible
+        name2Field.setForeground(Color.BLACK); // Text color
+        namePanel.add(name2Label);
+        namePanel.add(name2Field);
+
+
         // Enter button
         btn_Enter= new JButton("Enter");
         btn_Enter.setFont(new Font("Arial Black", Font.PLAIN, 14));
@@ -57,14 +89,23 @@ public class WelcomeFrame {
         panel1.add(titleLabel);
         panel1.add(subtitleLabel);
         panel1.add(developerLabel);
+        panel1.add(namePanel);
         panel1.add(buttonPanel);
 
         // Add action listener to the Enter button
         btn_Enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String player1Name = nameField.getText().trim();
+                String player2Name = name2Field.getText().trim();
+
+                if (player1Name.equals("") || player2Name.equals("")) {
+                    player1Name = "Player 1";
+                    player2Name = "Player 2";
+                }
+
                 // Create game controller and initialize players
-                GameController gameController = new GameController("John", "James");
+                GameController gameController = new GameController(player1Name, player2Name);
 
                 // Create and show game panel frame
                 GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
