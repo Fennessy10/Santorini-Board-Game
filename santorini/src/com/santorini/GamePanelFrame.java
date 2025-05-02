@@ -41,6 +41,10 @@ public class GamePanelFrame extends JFrame implements Runnable {
     private final int FPS = 60;
     private Thread gameThread;
 
+    // Colours for gamephases
+    private final Color darkGrey2 = new Color(120, 120, 120);
+    private final Color darkGrey3 = new Color(168, 168, 168);
+
     // Game components from GamePanel
     private GameController controller;
     private Controls controls;
@@ -258,6 +262,18 @@ public class GamePanelFrame extends JFrame implements Runnable {
         if (controller != null) {
             // Update game info labels
             statusLabel.setText("Game Phase: " + controller.getGamePhase());
+            if (controller.getGamePhase() == GamePhase.SELECT_WORKER) {
+                statusLabel.setForeground(Color.BLACK);
+
+            } else if (controller.getGamePhase() == GamePhase.MOVE_WORKER){
+                statusLabel.setForeground(darkGrey2);
+
+            } else if (controller.getGamePhase() == GamePhase.BUILD){
+                statusLabel.setForeground(darkGrey3);
+
+            } else {
+                statusLabel.setForeground(Color.BLACK);
+            }
 
 
             Player currentPlayer = controller.getCurrentPlayer();
