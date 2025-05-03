@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="gamewindow now resizeable">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/GamePanelFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/GamePanelFrame.java" afterDir="false" />
-    </list>
+    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="scaled the size of the board and window down to account for smaller screens" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,7 +121,7 @@
       <workItem from="1746157599212" duration="305000" />
       <workItem from="1746157937180" duration="37000" />
       <workItem from="1746158222483" duration="14748000" />
-      <workItem from="1746181844048" duration="4644000" />
+      <workItem from="1746181844048" duration="6090000" />
     </task>
     <task id="LOCAL-00001" summary="welcome screen frame is now centered">
       <option name="closed" value="true" />
@@ -206,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746181330832</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="scaled the size of the board and window down to account for smaller screens">
+      <option name="closed" value="true" />
+      <created>1746250257796</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746250257796</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +238,8 @@
     <MESSAGE value="added jar file" />
     <MESSAGE value="added potential project structure files" />
     <MESSAGE value="gamewindow now resizeable" />
-    <option name="LAST_COMMIT_MESSAGE" value="gamewindow now resizeable" />
+    <MESSAGE value="scaled the size of the board and window down to account for smaller screens" />
+    <option name="LAST_COMMIT_MESSAGE" value="scaled the size of the board and window down to account for smaller screens" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
