@@ -28,7 +28,7 @@ public class GamePanelFrame extends JFrame implements Runnable {
 
     // Screen settings
     private final int originalTileSize = 16;
-    private final int scale = 8;
+    private final int scale = 6;
     private final int tileSize = originalTileSize * scale;
     private final int CELL_SIZE = tileSize; // Using tileSize as cell size
 
@@ -121,7 +121,7 @@ public class GamePanelFrame extends JFrame implements Runnable {
         btn_start_over = new JButton("Start Over");
 
         // Set up the frame
-        this.setSize(1000, 1000);
+        this.setSize(800, 800);
         this.setContentPane(panel2);
         this.setTitle("Santorini Game");
         this.setResizable(true);

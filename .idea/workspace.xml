@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="added potential project structure files" />
+    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="gamewindow now resizeable">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/GamePanelFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/GamePanelFrame.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +85,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
@@ -120,7 +123,8 @@
       <workItem from="1746155626522" duration="862000" />
       <workItem from="1746157599212" duration="305000" />
       <workItem from="1746157937180" duration="37000" />
-      <workItem from="1746158222483" duration="13959000" />
+      <workItem from="1746158222483" duration="14748000" />
+      <workItem from="1746181844048" duration="4644000" />
     </task>
     <task id="LOCAL-00001" summary="welcome screen frame is now centered">
       <option name="closed" value="true" />
@@ -186,7 +190,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746180891060</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added potential project structure files">
+      <option name="closed" value="true" />
+      <created>1746181078471</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746181078471</updated>
+    </task>
+    <task id="LOCAL-00010" summary="gamewindow now resizeable">
+      <option name="closed" value="true" />
+      <created>1746181330832</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746181330832</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +232,8 @@
     <MESSAGE value="UI Improvement&#10;- gamephases now have different colours" />
     <MESSAGE value="added jar file" />
     <MESSAGE value="added potential project structure files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added potential project structure files" />
+    <MESSAGE value="gamewindow now resizeable" />
+    <option name="LAST_COMMIT_MESSAGE" value="gamewindow now resizeable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
