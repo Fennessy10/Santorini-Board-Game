@@ -18,6 +18,7 @@ public class GameController {
     private boolean gameOver;
     private GamePanelFrame gamePanel;
     private JFrame frame;
+    private boolean firstDome = true;
 
 
     // main constructor for class
@@ -202,7 +203,11 @@ public class GameController {
             if (godCard.build(board, workerCell, cell)) {
                 // Check if the build level is now 3, add a dome
                 if (cell.getBuildLvl() == 3) {
-                    cell.addDome();
+                    if (firstDome == true) {
+                        firstDome = false;
+                    } else {
+                        cell.addDome();
+                    }
                 }
                 // End turn and switch players
                 endTurn();
