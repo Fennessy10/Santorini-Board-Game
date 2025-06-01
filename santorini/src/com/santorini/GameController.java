@@ -1,12 +1,13 @@
 package com.santorini;
 
-import com.santorini.*;
+import com.santorini.gods.ArtemisCard;
+import com.santorini.gods.DemeterCard;
+import com.santorini.gods.ZeusCard;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 // class is responsible for the core logic of the game.
 public class GameController {
@@ -75,6 +76,7 @@ public class GameController {
         List<GodCard> godCards = new ArrayList<>();
         godCards.add(new ArtemisCard());
         godCards.add(new DemeterCard());
+        godCards.add(new ZeusCard());
         Random random = new Random();
         // randomly assign the god cards.
         int index1 = random.nextInt(godCards.size());
@@ -233,21 +235,23 @@ public class GameController {
         return targetCell.getBuildLvl()-currentCell.getBuildLvl() <= 1;
     }
 
-    // check is build is valid.
     private boolean isValidBuild(Worker worker, Cell targetCell) {
-        // Basic build validation (will be enhanced by god card's build logic)
-        if (targetCell.containsWorker() || targetCell.getDome()) {
+        boolean isZeus = currentPlayer.getGodCard() instanceof ZeusCard;
+
+        if (!isZeus && (targetCell.containsWorker() || targetCell.getDome())) {
             return false;
         }
+
+        if (targetCell.getDome()) return false;
 
         int workerX = worker.getX();
         int workerY = worker.getY();
         int targetX = targetCell.getX();
         int targetY = targetCell.getY();
 
-        // Check if target is adjacent
         return Math.abs(targetX - workerX) <= 1 && Math.abs(targetY - workerY) <= 1;
     }
+
 
     // end turn & change player
     private void endTurn() {

@@ -1,4 +1,4 @@
-package com.santorini;
+package com.santorini.gods;
 
 import com.santorini.Board;
 import com.santorini.Cell;

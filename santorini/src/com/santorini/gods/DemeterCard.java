@@ -1,4 +1,9 @@
-package com.santorini;
+package com.santorini.gods;
+
+import com.santorini.Board;
+import com.santorini.Cell;
+import com.santorini.GodCard;
+import com.santorini.Worker;
 
 public class DemeterCard extends GodCard {
    private boolean alreadyBuilt;

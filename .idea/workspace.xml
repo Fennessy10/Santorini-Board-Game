@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="scaled the size of the board and window down to account for smaller screens">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_05_2025_1_16_pm__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_05_2025_1_16_pm__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="fixes known defect - the first time building level 3 is building a dome">
+      <change afterPath="$PROJECT_DIR$/santorini/src/com/santorini/gods/ZeusCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/ArtemisCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/gods/ArtemisCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/DemeterCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/gods/DemeterCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +128,7 @@
       <workItem from="1746157937180" duration="37000" />
       <workItem from="1746158222483" duration="14748000" />
       <workItem from="1746181844048" duration="6090000" />
-      <workItem from="1748660213090" duration="1180000" />
+      <workItem from="1748660213090" duration="7883000" />
     </task>
     <task id="LOCAL-00001" summary="welcome screen frame is now centered">
       <option name="closed" value="true" />
@@ -218,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746250257796</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fixes known defect - the first time building level 3 is building a dome">
+      <option name="closed" value="true" />
+      <created>1748661564303</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748661564303</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +254,8 @@
     <MESSAGE value="added potential project structure files" />
     <MESSAGE value="gamewindow now resizeable" />
     <MESSAGE value="scaled the size of the board and window down to account for smaller screens" />
-    <option name="LAST_COMMIT_MESSAGE" value="scaled the size of the board and window down to account for smaller screens" />
+    <MESSAGE value="fixes known defect - the first time building level 3 is building a dome" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes known defect - the first time building level 3 is building a dome" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
