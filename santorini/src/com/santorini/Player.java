@@ -2,6 +2,7 @@ package com.santorini;
 
 public class Player {
     private String name;
+    private int age;
     private Worker worker_1;
     private Worker worker_2;
     private Worker utilised_worker;
@@ -9,8 +10,9 @@ public class Player {
     private GodCard godCard;
 
     // init class
-    public Player(String name) {
+    public Player(String name, int age) {
         this.name=name;
+        this.age=age;
         this.worker_1=null;
         this.worker_2=null;
         this.utilised_worker=null;

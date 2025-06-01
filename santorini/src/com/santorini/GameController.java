@@ -21,16 +21,24 @@ public class GameController {
     private GamePanelFrame gamePanel;
     private JFrame frame;
     private boolean firstDome = true;
+    private int player1Age;
+    private int player2Age;
 
 
     // main constructor for class
-    public GameController(String p1name, String p2name) {
+    public GameController(String p1name, String p2name, int p1age, int p2age, GodCard p1godCard, GodCard p2GodCard) {
         this.board = new Board();
         this.players = new ArrayList<>();
         this.gamePhase = GamePhase.SETUP_WORKERS;
         this.gameOver = false;
-        initializePlayers(p1name, p2name);
+        this.player1Age = p1age;
+        this.player2Age = p2age;
+
+        initializePlayers(p1name, p1age, p2name, p2age);
         this.currentPlayer = players.get(0);
+
+
+
     }
 
     public void setGamePanel(GamePanelFrame gamePanel) {
@@ -48,7 +56,7 @@ public class GameController {
 
         // Clear players list and recreate players
         this.players.clear();
-        initializePlayers(player1Name, player2Name);
+        initializePlayers(player1Name, player1Age, player2Name, player2Age);
 
         // Reset game state
         this.gamePhase = GamePhase.SETUP_WORKERS;
@@ -63,17 +71,16 @@ public class GameController {
 
 
     // method handles player init and calls method to assign the god cards.
-    private void initializePlayers(String p1_name, String p2_name) {
-        Player p1 = new Player(p1_name);
-        Player p2 = new Player(p2_name);
-        rndGodCards(p1, p2);
+    private void initializePlayers(String p1_name, int p1_age, String p2_name, int p2_age) {
+        Player p1 = new Player(p1_name, p1_age);
+        Player p2 = new Player(p2_name, p2_age);
         players.add(p1);
         players.add(p2);
     }
 
 
     // randomly assign god cards
-    private void rndGodCards(Player player1, Player player2) {
+    private void offerGodCards(Player player1, Player player2) {
         List<GodCard> godCards = new ArrayList<>();
         godCards.add(new ArtemisCard());
         godCards.add(new DemeterCard());
@@ -86,6 +93,12 @@ public class GameController {
         int index2= random.nextInt(godCards.size());
         player2.setGodCard(godCards.get(index2));
     }
+
+    public void setPlayerGodCards(GodCard p1Card, GodCard p2Card) {
+        players.get(0).setGodCard(p1Card);
+        players.get(1).setGodCard(p2Card);
+    }
+
 
     public void run() {
         while (!gameOver) {
@@ -435,7 +448,7 @@ public class GameController {
                 }
 
                 String godCardName = reader.readLine();
-                Player player = new Player(playerName);
+                Player player = new Player(playerName, 1);
                 if (!godCardName.equals("NONE")) {
                     player.setGodCard(createGodCardFromName(godCardName));
                 }

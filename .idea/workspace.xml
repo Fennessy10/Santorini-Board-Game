@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="finished implementing save/load system">
-      <change afterPath="$PROJECT_DIR$/santorini/src/com/santorini/IntegerFilter.java" afterDir="false" />
+    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="Age Panels added">
+      <change afterPath="$PROJECT_DIR$/santorini/src/com/santorini/ChooseCardFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/WelcomeFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/WelcomeFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +128,7 @@
       <workItem from="1746157937180" duration="37000" />
       <workItem from="1746158222483" duration="14748000" />
       <workItem from="1746181844048" duration="6090000" />
-      <workItem from="1748660213090" duration="18360000" />
+      <workItem from="1748660213090" duration="22375000" />
     </task>
     <task id="LOCAL-00001" summary="welcome screen frame is now centered">
       <option name="closed" value="true" />
@@ -240,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748759718747</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Age Panels added">
+      <option name="closed" value="true" />
+      <created>1748764151102</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748764151102</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +281,8 @@
     <MESSAGE value="fixes known defect - the first time building level 3 is building a dome" />
     <MESSAGE value="finished implementing zeus card" />
     <MESSAGE value="finished implementing save/load system" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished implementing save/load system" />
+    <MESSAGE value="Age Panels added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Age Panels added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

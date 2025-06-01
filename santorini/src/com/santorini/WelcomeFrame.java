@@ -130,24 +130,48 @@ public class WelcomeFrame {
         btn_Enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String player1Name = ageField.getText().trim();
-                String player2Name = ageField2.getText().trim();
+                String player1Name = nameField.getText().trim(); // assuming nameField exists
+                String player2Name = nameField.getText().trim(); // assuming nameField2 exists
 
-                if (player1Name.equals("") || player2Name.equals("")) {
-                    player1Name = "Player 1";
-                    player2Name = "Player 2";
+                String age1Text = ageField.getText().trim();
+                String age2Text = ageField2.getText().trim();
+
+                int player1Age = 0;
+                int player2Age = 0;
+
+                if (!age1Text.isEmpty()) {
+                    try {
+                        player1Age = Integer.parseInt(age1Text);
+                    } catch (NumberFormatException ex) {
+                        player1Age = 1;
+                    }
                 }
 
-                // Create game controller and initialize players
-                GameController gameController = new GameController(player1Name, player2Name);
+                if (!age2Text.isEmpty()) {
+                    try {
+                        player2Age = Integer.parseInt(age2Text);
+                    } catch (NumberFormatException ex) {
+                        player2Age = 1;
+                    }
+                }
 
-                // Create and show game panel frame
-                GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
-                gameController.setGamePanel(gamePanelFrame); // call setter from game controller
-                gamePanelFrame.setVisible(true);
-                gamePanelFrame.setLocationRelativeTo(null);
-                gamePanelFrame.startGameThread();
-                parentFrame.dispose();
+                if (player1Name.isEmpty()) player1Name = "Player 1";
+                if (player2Name.isEmpty()) player2Name = "Player 2";
+
+
+//                // Create game controller and initialize players
+//                GameController gameController = new GameController(player1Name, player2Name, player1Age, player2Age);
+//
+//                // Create and show game panel frame
+//                GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
+//                gameController.setGamePanel(gamePanelFrame); // call setter from game controller
+//                gamePanelFrame.setVisible(true);
+//                gamePanelFrame.setLocationRelativeTo(null);
+//                gamePanelFrame.startGameThread();
+//                parentFrame.dispose();
+
+                ChooseCardFrame chooseCardFrame = new ChooseCardFrame(parentFrame);
+                chooseCardFrame.setVisible(true);
             }
         });
     }
