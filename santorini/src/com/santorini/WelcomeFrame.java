@@ -162,17 +162,6 @@ public class WelcomeFrame {
                 if (player2Name.isEmpty()) player2Name = "Player 2";
 
 
-//                // Create game controller and initialize players
-//                GameController gameController = new GameController(player1Name, player2Name, player1Age, player2Age, new ZeusCard(), new ArtemisCard());
-//
-//                // Create and show game panel frame
-//                GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
-//                gameController.setGamePanel(gamePanelFrame); // call setter from game controller
-//                gamePanelFrame.setVisible(true);
-//                gamePanelFrame.setLocationRelativeTo(null);
-//                gamePanelFrame.startGameThread();
-//                parentFrame.dispose();
-
                 ChooseCardFrame chooseCardFrame = new ChooseCardFrame(parentFrame, player1Name, player1Age, player2Name, player2Age);
                 chooseCardFrame.setVisible(true);
                 parentFrame.dispose();

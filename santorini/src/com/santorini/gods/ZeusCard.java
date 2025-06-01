@@ -58,12 +58,6 @@ public class ZeusCard extends GodCard {
 
         boolean isUnderSelf = (worker_x == build_x && worker_y == build_y);
 
-        System.out.println("ZeusCard: isBuildAllowed check:");
-        System.out.println("Worker at: (" + worker_x + "," + worker_y + ")");
-        System.out.println("Build at: (" + build_x + "," + build_y + ")");
-        System.out.println("Is building under self? " + isUnderSelf);
-        System.out.println("BuildCell dome? " + buildCell.getDome() + ", level: " + buildCell.getBuildLvl());
-
         if (isUnderSelf) {
             return !buildCell.getDome() && buildCell.getBuildLvl() < 3;
         } else {
