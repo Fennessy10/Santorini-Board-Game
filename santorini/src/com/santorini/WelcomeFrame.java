@@ -1,5 +1,8 @@
 package com.santorini;
 
+import com.santorini.gods.ArtemisCard;
+import com.santorini.gods.ZeusCard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -131,7 +134,7 @@ public class WelcomeFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String player1Name = nameField.getText().trim(); // assuming nameField exists
-                String player2Name = nameField.getText().trim(); // assuming nameField2 exists
+                String player2Name = name2Field.getText().trim(); // assuming nameField2 exists
 
                 String age1Text = ageField.getText().trim();
                 String age2Text = ageField2.getText().trim();
@@ -160,7 +163,7 @@ public class WelcomeFrame {
 
 
 //                // Create game controller and initialize players
-//                GameController gameController = new GameController(player1Name, player2Name, player1Age, player2Age);
+//                GameController gameController = new GameController(player1Name, player2Name, player1Age, player2Age, new ZeusCard(), new ArtemisCard());
 //
 //                // Create and show game panel frame
 //                GamePanelFrame gamePanelFrame = new GamePanelFrame(gameController, null);
@@ -170,7 +173,7 @@ public class WelcomeFrame {
 //                gamePanelFrame.startGameThread();
 //                parentFrame.dispose();
 
-                ChooseCardFrame chooseCardFrame = new ChooseCardFrame(parentFrame);
+                ChooseCardFrame chooseCardFrame = new ChooseCardFrame(parentFrame, player1Name, player1Age, player2Name, player2Age);
                 chooseCardFrame.setVisible(true);
             }
         });

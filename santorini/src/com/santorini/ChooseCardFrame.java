@@ -15,9 +15,19 @@ public class ChooseCardFrame extends JFrame {
     private JComboBox<String> player2CardCombo;
     private JButton btnEnter;
     private JFrame parentFrame;
+    private String p1_name;
+    private String p2_name;
+    private int p1_age;
+    private int p2_age;
 
-    public ChooseCardFrame(JFrame parentFrame) {
+    public ChooseCardFrame(JFrame parentFrame, String p1_name, int p1_age, String p2_name, int p2_age) {
         this.parentFrame = parentFrame;
+        this.setTitle("Choose Card");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.p1_age = p1_age;
+        this.p2_age = p2_age;
+        this.p1_name = p1_name;
+        this.p2_name = p2_name;
         initializeUI();
     }
 
@@ -38,11 +48,11 @@ public class ChooseCardFrame extends JFrame {
         // Setup UI
         JPanel selectionPanel = new JPanel(new GridLayout(3, 2, 10, 10));
 
-        selectionPanel.add(new JLabel("Player 1 God Card:"));
+        selectionPanel.add(new JLabel(p1_name + " God Card:"));
         player1CardCombo = new JComboBox<>(godNames);
         selectionPanel.add(player1CardCombo);
 
-        selectionPanel.add(new JLabel("Player 2 God Card:"));
+        selectionPanel.add(new JLabel(p2_name + " God Card:"));
         player2CardCombo = new JComboBox<>(godNames);
         selectionPanel.add(player2CardCombo);
 
