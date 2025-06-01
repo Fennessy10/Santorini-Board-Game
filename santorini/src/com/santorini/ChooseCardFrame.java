@@ -22,12 +22,20 @@ public class ChooseCardFrame extends JFrame {
 
     public ChooseCardFrame(JFrame parentFrame, String p1_name, int p1_age, String p2_name, int p2_age) {
         this.parentFrame = parentFrame;
-        this.p1_name = p1_name;
-        this.p2_name = p2_name;
-        this.p1_age = p1_age;
-        this.p2_age = p2_age;
+        if (p1_age > p2_age) {
+            this.p1_name = p1_name;
+            this.p1_age = p1_age;
+            this.p2_name = p2_name;
+            this.p2_age = p2_age;
+        } else {
+            this.p1_name = p2_name;
+            this.p1_age = p2_age;
+            this.p2_name = p1_name;
+            this.p2_age = p1_age;
+        }
 
-        setTitle("Choose God Card - " + p1_name);
+
+        setTitle("Choose God Card - " + this.p1_name);
         setSize(400, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -40,7 +48,7 @@ public class ChooseCardFrame extends JFrame {
         godCardMap.put("Zeus", new ZeusCard());
 
         JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
-        panel.add(new JLabel(p1_name + ", choose your God Card:"));
+        panel.add(new JLabel(this.p1_name + ", choose your God Card - you are older so you get first pick:"));
         cardCombo = new JComboBox<>(godNames);
         panel.add(cardCombo);
 
@@ -52,8 +60,15 @@ public class ChooseCardFrame extends JFrame {
                 GodCard godCard1 = godCardMap.get(selected1);
 
                 ChooseCardFrame2 secondFrame = new ChooseCardFrame2(
-                        parentFrame, p1_name, p1_age, p2_name, p2_age, selected1, godCard1
+                        ChooseCardFrame.this.parentFrame,
+                        ChooseCardFrame.this.p1_name,
+                        ChooseCardFrame.this.p1_age,
+                        ChooseCardFrame.this.p2_name,
+                        ChooseCardFrame.this.p2_age,
+                        selected1,
+                        godCard1
                 );
+
                 secondFrame.setVisible(true);
                 dispose();
             }

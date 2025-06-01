@@ -317,9 +317,9 @@ public class GamePanelFrame extends JFrame implements Runnable {
             lb_player_1.setText(controller.getPlayers().get(0).getName());
             lb_player_2.setText(controller.getPlayers().get(1).getName());
 
-//            // Update god cards
-//            lb_card_1.setText("God: " + controller.getPlayers().get(0).getGodCard().getName());
-//            lb_card_2.setText("God: " + controller.getPlayers().get(1).getGodCard().getName());
+            // Update god cards
+            lb_card_1.setText("God: " + controller.getPlayers().get(0).getGodCard().getName());
+            lb_card_2.setText("God: " + controller.getPlayers().get(1).getGodCard().getName());
 
             // Repaint the center panel
             panel_c.repaint();

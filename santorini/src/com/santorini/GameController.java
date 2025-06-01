@@ -34,7 +34,7 @@ public class GameController {
         this.player1Age = p1age;
         this.player2Age = p2age;
 
-        initializePlayers(p1name, p1age, p2name, p2age);
+        initializePlayers(p1name, p1age, p2name, p2age, p1godCard, p2GodCard);
         this.currentPlayer = players.get(0);
 
 
@@ -54,9 +54,12 @@ public class GameController {
         String player1Name = players.get(0).getName();
         String player2Name = players.get(1).getName();
 
+        GodCard player1GodCard = players.get(0).getGodCard();
+        GodCard player2GodCard = players.get(1).getGodCard();
+
         // Clear players list and recreate players
         this.players.clear();
-        initializePlayers(player1Name, player1Age, player2Name, player2Age);
+        initializePlayers(player1Name, player1Age, player2Name, player2Age, player1GodCard, player2GodCard);
 
         // Reset game state
         this.gamePhase = GamePhase.SETUP_WORKERS;
@@ -71,11 +74,14 @@ public class GameController {
 
 
     // method handles player init and calls method to assign the god cards.
-    private void initializePlayers(String p1_name, int p1_age, String p2_name, int p2_age) {
+    private void initializePlayers(String p1_name, int p1_age, String p2_name, int p2_age, GodCard p1_godCard, GodCard p2_godCard) {
         Player p1 = new Player(p1_name, p1_age);
         Player p2 = new Player(p2_name, p2_age);
         players.add(p1);
         players.add(p2);
+        p1.setGodCard(p1_godCard);
+        p2.setGodCard(p2_godCard);
+
     }
 
 

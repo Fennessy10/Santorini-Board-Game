@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="age bug fixed">
-      <change afterPath="$PROJECT_DIR$/santorini/src/com/santorini/ChooseCardFrame2.java" afterDir="false" />
+    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="choosing cards now works">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/ChooseCardFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/ChooseCardFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/WelcomeFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/WelcomeFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santorini/src/com/santorini/GamePanelFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/santorini/src/com/santorini/GamePanelFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +127,7 @@
       <workItem from="1746157937180" duration="37000" />
       <workItem from="1746158222483" duration="14748000" />
       <workItem from="1746181844048" duration="6090000" />
-      <workItem from="1748660213090" duration="23387000" />
+      <workItem from="1748660213090" duration="24631000" />
     </task>
     <task id="LOCAL-00001" summary="welcome screen frame is now centered">
       <option name="closed" value="true" />
@@ -264,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748770487360</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="choosing cards now works">
+      <option name="closed" value="true" />
+      <created>1748770957181</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1748770957181</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +307,8 @@
     <MESSAGE value="Age Panels added" />
     <MESSAGE value="created new ChooseCardFrame class and am finishing up 3rd extension" />
     <MESSAGE value="age bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="age bug fixed" />
+    <MESSAGE value="choosing cards now works" />
+    <option name="LAST_COMMIT_MESSAGE" value="choosing cards now works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
