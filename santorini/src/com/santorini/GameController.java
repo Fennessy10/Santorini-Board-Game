@@ -84,28 +84,6 @@ public class GameController {
 
     }
 
-
-    // randomly assign god cards
-    private void offerGodCards(Player player1, Player player2) {
-        List<GodCard> godCards = new ArrayList<>();
-        godCards.add(new ArtemisCard());
-        godCards.add(new DemeterCard());
-        godCards.add(new ZeusCard());
-        Random random = new Random();
-        // randomly assign the god cards.
-        int index1 = random.nextInt(godCards.size());
-        player1.setGodCard(godCards.get(index1));
-        godCards.remove(index1);
-        int index2= random.nextInt(godCards.size());
-        player2.setGodCard(godCards.get(index2));
-    }
-
-    public void setPlayerGodCards(GodCard p1Card, GodCard p2Card) {
-        players.get(0).setGodCard(p1Card);
-        players.get(1).setGodCard(p2Card);
-    }
-
-
     public void run() {
         while (!gameOver) {
             try {
