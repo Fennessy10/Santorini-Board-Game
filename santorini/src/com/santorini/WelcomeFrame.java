@@ -175,6 +175,7 @@ public class WelcomeFrame {
 
                 ChooseCardFrame chooseCardFrame = new ChooseCardFrame(parentFrame, player1Name, player1Age, player2Name, player2Age);
                 chooseCardFrame.setVisible(true);
+                parentFrame.dispose();
             }
         });
     }
