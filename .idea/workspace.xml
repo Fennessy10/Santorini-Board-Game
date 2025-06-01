@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="removed debugging statements" />
+    <list default="true" id="bf0bc4af-38e0-4207-9f55-71f190f5865f" name="Changes" comment="updated readme file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +124,7 @@
       <workItem from="1746157937180" duration="37000" />
       <workItem from="1746158222483" duration="14748000" />
       <workItem from="1746181844048" duration="6090000" />
-      <workItem from="1748660213090" duration="30267000" />
+      <workItem from="1748660213090" duration="31552000" />
     </task>
     <task id="LOCAL-00001" summary="welcome screen frame is now centered">
       <option name="closed" value="true" />
@@ -300,7 +302,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748778757420</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="disposed of unused functions">
+      <option name="closed" value="true" />
+      <created>1748779566017</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1748779566017</updated>
+    </task>
+    <task id="LOCAL-00024" summary="updated readme file">
+      <option name="closed" value="true" />
+      <created>1748779705889</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1748779705889</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +356,9 @@
     <MESSAGE value="fixed bugs and allows older player to get first pick on their god card" />
     <MESSAGE value="deleted spritemanager class for project simplification because it never ended up being used" />
     <MESSAGE value="removed debugging statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed debugging statements" />
+    <MESSAGE value="disposed of unused functions" />
+    <MESSAGE value="updated readme file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated readme file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
