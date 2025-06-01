@@ -68,7 +68,7 @@ public class ChooseCardFrame2 extends JFrame {
                         p1_name, p2_name, p1_age, p2_age, godCard1, godCard2
                 );
 
-                GamePanelFrame gamePanel = new GamePanelFrame(controller, null);
+                GamePanelFrame gamePanel = new GamePanelFrame(controller);
                 controller.setGamePanel(gamePanel);
                 gamePanel.setVisible(true);
                 gamePanel.setLocationRelativeTo(null);

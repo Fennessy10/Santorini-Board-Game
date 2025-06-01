@@ -56,7 +56,6 @@ public class GamePanelFrame extends JFrame implements Runnable {
     // Game components from GamePanel
     private GameController controller;
     private Controls controls;
-    private SpriteManager spriteManager;
 
     // Status labels for game information
     private JLabel statusLabel;
@@ -68,9 +67,8 @@ public class GamePanelFrame extends JFrame implements Runnable {
     }
 
 
-    public GamePanelFrame(GameController controller, SpriteManager spriteManager) {
+    public GamePanelFrame(GameController controller) {
         this.controller = controller;
-        this.spriteManager = spriteManager;
         this.controls = new Controls(this);
 
         initializeUI();
