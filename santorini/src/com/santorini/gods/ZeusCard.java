@@ -78,8 +78,6 @@ public class ZeusCard extends GodCard {
             return false;
         }
 
-        System.out.println("ZeusCard: attempting build...");
-
 
         buildCell.incLvl();
         return true;
