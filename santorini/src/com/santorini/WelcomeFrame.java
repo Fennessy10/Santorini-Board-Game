@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
+
 
 /**
  * Welcome Frame for Santorini Game
@@ -74,6 +77,37 @@ public class WelcomeFrame {
         namePanel.add(name2Label);
         namePanel.add(name2Field);
 
+        JLabel ageLabel = new JLabel("     Enter Player 1 Age: ");
+        ageLabel.setFont(new Font("DialogInput", Font.BOLD, 16));
+        ageLabel.setForeground(new Color(240, 241, 0)); // Yellowish
+
+        JTextField ageField = new JTextField();
+        ageField.setFont(new Font("DialogInput", Font.PLAIN, 16));
+        ageField.setColumns(15);
+        ageField.setPreferredSize(new Dimension(200, 30));  // Force a visible size
+        ageField.setBackground(Color.WHITE); // Ensure it's visible
+        ageField.setForeground(Color.BLACK); // Text color
+        namePanel.add(ageLabel);
+        namePanel.add(ageField);
+
+        JLabel ageLabel2 = new JLabel("Enter Player 2 Age: ");
+        ageLabel2.setFont(new Font("DialogInput", Font.BOLD, 16));
+        ageLabel2.setForeground(new Color(240, 241, 0)); // Yellowish
+
+        JTextField ageField2 = new JTextField();
+        ageField2.setFont(new Font("DialogInput", Font.PLAIN, 16));
+        ageField2.setColumns(15);
+        ageField2.setPreferredSize(new Dimension(200, 30));  // Force a visible size
+        ageField2.setBackground(Color.WHITE); // Ensure it's visible
+        ageField2.setForeground(Color.BLACK); // Text color
+
+        // Apply integer-only filter
+        ((AbstractDocument) ageField.getDocument()).setDocumentFilter(new IntegerFilter());
+        ((AbstractDocument) ageField2.getDocument()).setDocumentFilter(new IntegerFilter());
+
+        namePanel.add(ageLabel2);
+        namePanel.add(ageField2);
+
 
         // Enter button
         btn_Enter= new JButton("Enter");
@@ -96,8 +130,8 @@ public class WelcomeFrame {
         btn_Enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String player1Name = nameField.getText().trim();
-                String player2Name = name2Field.getText().trim();
+                String player1Name = ageField.getText().trim();
+                String player2Name = ageField2.getText().trim();
 
                 if (player1Name.equals("") || player2Name.equals("")) {
                     player1Name = "Player 1";
