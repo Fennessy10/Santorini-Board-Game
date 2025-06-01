@@ -14,6 +14,8 @@ public class Worker {
         this.player=player;
     }
 
+
+
     // set position of worker
     public void setPos(int x, int y) {
         this.x=x;

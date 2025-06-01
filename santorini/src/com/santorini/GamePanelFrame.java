@@ -6,9 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.border.LineBorder;
 
 public class GamePanelFrame extends JFrame implements Runnable {
+    // file path for saving and loading game
+    private final String saveFileName= "santorini_save.txt";
+
     // UI Components from original GamePanelFrame
     private JPanel panel2;
     private JPanel panel_n;
@@ -25,6 +31,8 @@ public class GamePanelFrame extends JFrame implements Runnable {
     private JButton btn_finish;
     private JButton btn_start_over;
     private JLabel lb_worker;
+    private JButton btn_save_game;
+    private JButton btn_load_game;
 
     // Screen settings
     private final int originalTileSize = 16;
@@ -119,6 +127,8 @@ public class GamePanelFrame extends JFrame implements Runnable {
         // Initialize buttons
         btn_finish = new JButton("Finish");
         btn_start_over = new JButton("Start Over");
+        btn_save_game = new JButton("Save Game");
+        btn_load_game = new JButton("Load Game");
 
         // Set up the frame
         this.setSize(800, 800);
@@ -161,6 +171,8 @@ public class GamePanelFrame extends JFrame implements Runnable {
         panel_s.add(win_pl_name);
         panel_s.add(btn_finish);
         panel_s.add(btn_start_over);
+        panel_s.add(btn_save_game);
+        panel_s.add(btn_load_game);
 
         // Wrap panel_c in a center wrapper to centre it properly
         JPanel centerWrapper = new JPanel(new GridBagLayout());
@@ -191,6 +203,24 @@ public class GamePanelFrame extends JFrame implements Runnable {
                     // Reset game
                     controller.resetGame();
                     updateUI();
+                }
+            }
+        });
+
+        btn_save_game.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (controller != null) {
+                    controller.saveGame(saveFileName);
+                }
+            }
+        });
+
+        btn_load_game.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (controller != null) {
+                    controller.loadGame(saveFileName);
                 }
             }
         });
@@ -258,7 +288,7 @@ public class GamePanelFrame extends JFrame implements Runnable {
         }
     }
 
-    private void updateUI() {
+    void updateUI() {
         if (controller != null) {
             // Update game info labels
             statusLabel.setText("Game Phase: " + controller.getGamePhase());
@@ -478,5 +508,9 @@ public class GamePanelFrame extends JFrame implements Runnable {
     public GameController getController() {
         return controller;
     }
+
+
+
+
 
 }

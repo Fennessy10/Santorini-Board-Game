@@ -78,7 +78,7 @@ public class Board {
         }
     }
 
-// Also likely to be a temp method just for testing purposes to represent a dome.
+    // Also likely to be a temp method just for testing purposes to represent a dome.
     // Probably still good enough for final version, just depends on how fancy we want our graphics to be
     public void createDomeGraphics(int x, int y, int w, int h, Graphics graphics) {
         // generates the dome dimensions based on the cell size and substracts 10. To make sure it fits in the cell.
@@ -107,6 +107,24 @@ public class Board {
         graphics.drawOval(worker_x, worker_y, workerSize, workerSize);
         graphics.drawString(String.valueOf(worker.getWorkerId()), (worker_x+workerSize/2), (worker_y+workerSize/2));
 
+    }
+
+    public int getBoardSize() {
+        return BOARD_SIZE;
+    }
+
+    /**
+     * Resets all workers on the board by setting the worker reference in each cell to null.
+     * This is useful before loading a new game state to ensure no old worker data persists.
+     */
+    public void resetWorkers(Board board) {
+        for (int x = 0; x < board.getBoardSize(); x++) {
+            for (int y = 0; y < board.getBoardSize(); y++) {
+                if (cells[x][y].containsWorker()) {
+                    cells[x][y].setWorker(null);
+                }
+            }
+        }
     }
 
 }

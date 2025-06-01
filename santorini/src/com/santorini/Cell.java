@@ -80,5 +80,6 @@ public class Cell {
     public int getBuildLvl() {
         return build_lvl;
     }
+    public void setBuildLvl(int build_lvl) {this.build_lvl = build_lvl;}
 
 }
