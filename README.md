@@ -1,9 +1,9 @@
 # Santorini Board Game
 [Rulebook](https://cdn.1j1ju.com/medias/fc/ec/5d-santorini-rulebook.pdf)
 
-<img src="https://github.com/Fennessy10/Santorini-Board-Game/blob/main/santorini%20welcome%20screen.png?raw=true" alt="Santorini WelcomeScreen Screenshot" width="400"/>
+<img src="https://github.com/Fennessy10/Santorini-Board-Game/blob/main/santorini%20welcome%20screen.png?raw=true" alt="Santorini WelcomeScreen Screenshot" width="500"/>
 
-<img src="https://github.com/Fennessy10/Santorini-Board-Game/blob/main/santorini%20board%20pic.png?raw=true" alt="Santorini Board Screenshot" width="400"/>
+<img src="https://github.com/Fennessy10/Santorini-Board-Game/blob/main/santorini%20board%20pic.png?raw=true" alt="Santorini Board Screenshot" width="500"/>
 
 
 # Instructions to run the code
