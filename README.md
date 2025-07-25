@@ -3,6 +3,8 @@
 
 ![Santorini WelcomeScreen Screenshot](https://github.com/Fennessy10/Santorini-Board-Game/blob/main/santorini%20welcome%20screen.png?raw=true)
 
+![Santorini Board Screenshot](https://github.com/Fennessy10/Santorini-Board-Game/blob/main/santorini%20board%20pic.png?raw=true)
+
 # Instructions to run the code
 1) download and open the gitlab project in your IDE
 2) under the santorini file, look for the "src" file
